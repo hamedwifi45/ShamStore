@@ -1,0 +1,115 @@
+/* 
+Theme Name:          Storefront Child
+Description:         A child theme of Storefront
+Author:              ABD ALHAMID
+Template:            storefront
+Version:             1.0.0
+*/
+
+.site-header {
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #e7e7e7;
+}
+.search-field {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 3px;
+}
+.summit-title{
+    margin: 0;
+    font-size: 65px;
+    font-weight: 600;
+}
+
+.summit-dates{
+    font-size: 26px;
+    margin-top: 10px;
+    color: #555;
+}
+
+.online-summit-product-page .storefront-breadcrumb {
+    margin: 10px 0;
+}
+.woocommerce-shop .content-area ,.single-product .content-area , .online-summit-product-page  .content-area {
+    float: none;
+    margin-right: 0;
+    width: 100%;
+}
+.site-info-footer {
+    text-align: center;
+    font-weight: 400;
+    font-size: larger;
+    padding: 1rem;
+}
+
+.shop-sub-header{
+    text-align: center;
+    font-weight: 700;
+    margin: 50px 0;
+}
+.wc-block-product-filters__overlay-content {
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap; /* يسمح بالنزول لصف جديد في الشاشات الصغيرة */
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  direction: rtl; /* دعم اللغة العربية */
+}
+
+.wc-block-product-filters__overlay-content > div {
+    flex: 0 0 auto;
+    width: auto !important;
+    min-width: 200px;
+    max-width: 300px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.onsale{
+    top: 0;
+    right: 0;
+    left: auto;
+    background-color: #ff0000;
+    color: #ffffff;
+    min-width: 56px;
+    min-height: 32px;
+    line-height: 36px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    z-index: 9;
+    border: none;
+}
+
+.woocommerce-loop-product__title , .price , .add_to_cart_button {
+    font-weight: 700;
+    white-space: nowrap;
+}
+.add_to_cart_button {
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    color: #ffffff;
+    border-color: #0170B9;
+    background-color: #0170B9;
+    border-radius: 2px;
+    padding-top: 10px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+
+}
+
+.add_to_cart_button:hover , .add_to_cart_button:active {
+    transition: all 0.3s ease;
+    /* background-color: #3a3a3a; */
+    border-color: #3a3a3a;
+}
+.shop-thumnail-wrap{
+    position: relative;
+}

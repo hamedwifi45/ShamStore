@@ -141,6 +141,10 @@ function close_the_shop_thumnail_wrapper(){
 }
 add_action('woocommerce_after_shop_loop_item_title', 'close_the_shop_thumnail_wrapper' , 11);
 
+function storefront_child_customizer_preview_js(){
+    wp_enqueue_script('storefront_child_customizer_preview' , get_stylesheet_directory_uri() . '/assets/js/customizer.js' , array('jquery' , 'customize_preview') , true);
+}
+add_action('customize_preview_init' , 'storefront_child_customizer_preview_js');
 
 require  get_stylesheet_directory() . '/inc/wcp-online-summit.php';
 require  get_stylesheet_directory() . '/inc/share-button.php';

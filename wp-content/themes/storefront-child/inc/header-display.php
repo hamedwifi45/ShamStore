@@ -13,7 +13,7 @@ function storefront_child_customize_header_display($wp_customize){
         'theme_supports' => '',
         'default' => 'theme1',
         'section' => 'header_display',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
         'sanitize_callback' => '',
         'sanitize_js_callback' => '',
     ));
@@ -38,34 +38,17 @@ if(get_theme_mod('header_display_theme') == 'theme1'){
 }
 elseif(get_theme_mod('header_display_theme') == 'theme2'){
     add_action('get_footer', function(){
-    wp_enqueue_style('header-theme2' , get_stylesheet_directory_uri() . '/inc/assets/css/header-display-theme2.css');  
+    wp_enqueue_style('header-theme2' , get_stylesheet_directory_uri() . '/assets/css/header-display-theme2.css');  
     });
 }
 elseif(get_theme_mod('header_display_theme') == 'theme3'){
     add_action('get_footer', function(){
-    wp_enqueue_style('header-theme3' , get_stylesheet_directory_uri() . '/inc/assets/css/header-display-theme3.css');  
+    wp_enqueue_style('header-theme3' , get_stylesheet_directory_uri() . '/assets/css/header-display-theme3.css');  
     });
 }
 elseif(get_theme_mod('header_display_theme') == 'theme4'){
     add_action('get_footer', function(){
-    wp_enqueue_style('header-theme4' , get_stylesheet_directory_uri() . '/inc/assets/css/header-display-theme4.css');  
+    wp_enqueue_style('header-theme4' , get_stylesheet_directory_uri() . '/assets/css/header-display-theme4.css');  
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

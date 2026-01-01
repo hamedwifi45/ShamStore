@@ -126,11 +126,14 @@ function remove_sale_flashh(){
 add_filter('woocommerce_sale_flash', 'remove_sale_flashh');
 
 function sale_badge_before_the_product_image(){
-    echo '<div class="shop-thumnail-wrap">';
+    do_action('sale_badge_before_the_product_image');
+    $html = '<div class="shop-thumnail-wrap">';
     global $product;
     if ( $product->is_on_sale() ) {
-        echo '<span class="onsale">' . esc_html__( 'Sale!', 'storefront-child' ) . '</span>';
+        $html .= '<span class=" onsale ">' . esc_html__( 'Sale!', 'storefront-child' ) . '</span>';
+    
     }
+    echo apply_filters('helo_world_test_filter',$html);
 }
 add_action('woocommerce_before_shop_loop_item_title', 'sale_badge_before_the_product_image' , 9);
 
@@ -142,9 +145,19 @@ function close_the_shop_thumnail_wrapper(){
 add_action('woocommerce_after_shop_loop_item_title', 'close_the_shop_thumnail_wrapper' , 11);
 
 function storefront_child_customizer_preview_js(){
-    wp_enqueue_script('storefront_child_customizer_preview' , get_stylesheet_directory_uri() . '/assets/js/customizer.js' , array('jquery' , 'customize_preview') , true);
+    wp_enqueue_script('storefront_child_customizer_preview' , get_stylesheet_directory_uri() . '/assets/js/customizer.js' , array('jquery' , 'customize-preview') , true);
 }
 add_action('customize_preview_init' , 'storefront_child_customizer_preview_js');
+
+// function storefront_child_hook_test(){
+//     echo '<h2> helo sham</h2>';
+// }
+// add_action('sale_badge_before_the_product_image' , 'storefront_child_hook_test');
+
+// function storefront_child_test($html){
+//     return str_replace('onsale' , 'onsale extra_helo' , $html);
+// }
+// add_filter('helo_world_test_filter' , 'storefront_child_test');
 
 require  get_stylesheet_directory() . '/inc/wcp-online-summit.php';
 require  get_stylesheet_directory() . '/inc/share-button.php';

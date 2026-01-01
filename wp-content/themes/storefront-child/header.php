@@ -43,7 +43,7 @@
 				background-color: #5758578c;
 			}
 			
-
+/* 
 			.woocommerce-shop .woocommerce-loop-product__title,
 			.woocommerce-shop .price,
 			.woocommerce-shop .add_to_cart_button,
@@ -53,8 +53,32 @@
 				position: relative;
 				display: none;
 				z-index: 3;
-				/* أضف z-index هنا أيضًا */
-			}
+				left: 0;
+				right: 0;
+				margin : 0 !important;
+				
+			 }  
+			   */
+			    
+			.woocommerce-shop .woocommerce-loop-product__title,
+			.woocommerce-shop .price,
+			.woocommerce-shop .add_to_cart_button,
+			.woocommerce-shop .product_type_grouped,
+			.woocommerce-shop .product_type_external {
+				position: absolute; 
+				left: 0;
+				bottom : 250px;
+				right: 0;
+				text-align: center;
+				z-index: 3;
+              	display: none;
+				transition: all 0.3s ease;
+				margin: 0 !important;
+				transform: translate(-50%, -50%);
+			} 
+			
+
+			.shop-thumbnail-wrap { overflow: hidden; }
 
 			.woocommerce-shop .price,
 			.woocommerce-shop .amount,

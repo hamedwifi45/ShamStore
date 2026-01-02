@@ -85,7 +85,60 @@ if (!class_exists('Woo_Sham')) {
             
             // تهيئة التكامل مع WooCommerce
             add_action('plugins_loaded', array($this, 'init_integration'));
+        
+            add_action('woocommerce_before_main_content' , array($this , 'add_currency_selector') , 90);
+        
+            add_action('wp_ajax_set_currency_cookie' , [$this , 'set_currency_cookie']);
+            add_action('wp_ajax_nopriv_set_currency_cookie',[$this , 'set_currency_cookie']);
+            add_action('wp_enqueue_scripts' , [$this , 'woo_sham_enqueue_assets']);
+        
+            add_filter('woocommerce_product_get_price' , array($this , 'change_price'));
+            add_filter('woocommerce_product_variation_get_price' , array($this , 'change_price'));
+            add_filter('woocommerce_product_get_regular_price' , array($this , 'change_price'));
+            add_filter('woocommerce_product_get_sale_price' , array($this , 'change_price'));
+        }   
+        function woo_sham_enqueue_assets(){
+            wp_register_script('set_currency_cookie_ajax' , plugin_dir_url(__FILE__).'/assets/js/ajax.js' , array('jquery'));
+
+            $parameters = array('ajaxurl' => admin_url('admin-ajax.php') , 'ajax_nonce' => wp_create_nonce('set_currency_cookie'));
+            wp_localize_script('set_currency_cookie_ajax' , 'set_currency_cookie_ajax' ,$parameters);
+
+            wp_enqueue_script('set_currency_cookie_ajax');
         }
+
+        public function set_currency_cookie(){
+            if(!wp_verify_nonce($_POST['nonce'] , "set_currency_cookie")){
+                exit('securite check Error');
+            }
+            $result = array();
+            if (isset($_POST['currency_selector'])){
+                unset($_COOKIE['currency']);
+                setcookie("currency" , $_POST['currency_selector'] , time() + 87600 , '/');
+                $result['type']='success';
+                $result = json_encode($result);
+                echo $result;
+            }
+            die();
+        }
+
+
+        public function change_price($price){
+            if($price < 1.0 || !isset($_COOKIE['currency']) || $_COOKIE == get_woocommerce_currency()){
+                return $price;
+            }
+            $pairs = get_option('woo_currency_pairs');
+            foreach($pairs as $key => $value){
+                if($_COOKIE['currency'] == $key){
+                    return floatval($price) * floatval($value);
+                }
+            }
+            return $price;
+        }
+
+        function add_currency_selector(){
+            do_shortcode('[currency_selector]');
+        }
+
         
         /**
          * التحقق من متطلبات النظام عند تفعيل الإضافة

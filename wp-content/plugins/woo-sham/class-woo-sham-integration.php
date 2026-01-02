@@ -11,7 +11,7 @@ if(!class_exists('Woo_Sham_Integration')) {
          * قيمة الإعدادات المخزنة
          * @var string
          */
-        public $setting_value;
+        public $currency_pairs;
         
         /**
          * المُنشئ - يهيئ فئة التكامل مع WooCommerce
@@ -36,6 +36,7 @@ if(!class_exists('Woo_Sham_Integration')) {
 
             // حفظ الإعدادات عند التحديث
             add_action('woocommerce_update_options_integration_' . $this->id, array($this, 'process_admin_options'));
+            add_shortcode('currency_selector' , array($this, 'display_select_currency'));
         }
         
         /**
@@ -44,7 +45,7 @@ if(!class_exists('Woo_Sham_Integration')) {
          */
         public function init_form_fields() {
             $this->form_fields = array(
-                'setting_value' => array(
+                'currency_pairs' => array(
                     'title'       => __('Currency Pairs', 'woo-sham'),
                     'type'        => 'textarea',
                     'description' => __('Enter Currency Pairs \n Ex: EUR:1.9 \n SYR:99', 'woo-sham'),
@@ -70,10 +71,26 @@ if(!class_exists('Woo_Sham_Integration')) {
                     return $value;
                 }
             }catch(\Throwable $th){
-                WC_Admin_Settings::add_error(esc_html__(' Looks Like you made   ','woo-sham'));
+                WC_Admin_Settings::add_error(esc_html__('An error occurred. Please make sure you have placed : between the currency name and its value.','woo-sham'));
                 return $this->currency_pairs;
             }
-            
+        }
+        public function display_select_currency(){
+            $cur_selected = 'not set';
+            if(isset($_COOKIE['currency'])){
+                $cur_selected = $_COOKIE['currency'];
+            }
+            $pairs = get_option('woo_currency_pairs');
+            echo '<form action="" method="post" id="currency_selector"><label for="select_currency">' . esc_html__('Currency : ' , 'woo-sham') . '</label> 
+             <select name="currency_selector" id="select_currency">
+             <option value="' . get_woocommerce_currency() . '">' . get_woocommerce_currency() . '</option>';
+
+             foreach ($pairs as $key => $value){
+                $selected = ($cur_selected == $key ) ? 'selected' : '';
+                $option = '<option'. $selected .' value="'.$key.'">'.$key.'</option>';
+                echo $option;
+            }
+            echo '</select><input type="submit" value="'.esc_html__('set','woo-sham').'"></form>';
         }
     }
 }

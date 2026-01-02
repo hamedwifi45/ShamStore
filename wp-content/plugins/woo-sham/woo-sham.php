@@ -96,6 +96,7 @@ if (!class_exists('Woo_Sham')) {
             add_filter('woocommerce_product_variation_get_price' , array($this , 'change_price'));
             add_filter('woocommerce_product_get_regular_price' , array($this , 'change_price'));
             add_filter('woocommerce_product_get_sale_price' , array($this , 'change_price'));
+            add_filter('woocommerce_currency_symbol' , array($this , 'change_existing_currency_symbol') , 10 ,2);
         }   
         function woo_sham_enqueue_assets(){
             wp_register_script('set_currency_cookie_ajax' , plugin_dir_url(__FILE__).'/assets/js/ajax.js' , array('jquery'));
@@ -119,6 +120,15 @@ if (!class_exists('Woo_Sham')) {
                 echo $result;
             }
             die();
+        }
+
+        public function change_existing_currency_symbol($currency_symbol , $currency){
+            if(!isset($_COOKIE['currency']) || $_COOKIE['currency'] == $currency){
+                return $currency_symbol;
+            }else{
+                $currency_symbol = get_woocommerce_currency_symbol($_COOKIE['currency']);
+                return $currency_symbol;
+            }
         }
 
 

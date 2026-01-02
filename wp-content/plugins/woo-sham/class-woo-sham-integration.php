@@ -30,7 +30,10 @@ if(!class_exists('Woo_Sham_Integration')) {
             
             // تعيين القيمة المدخلة من قبل المستخدم
             $this->currency_pairs = $this->get_option('currency_pairs');
-            
+            $this->auto_currency_pairs = $this->get_option('auto_currency_pairs');
+            if(isset($this->auto_currency_pairs) && $this->auto_currency_pairs == "yes"){
+                $this->get_currencies_from_api();
+            }
 
 
 
@@ -52,10 +55,19 @@ if(!class_exists('Woo_Sham_Integration')) {
                     'desc_tip'    => true,
                     'default'     => '',
                     'css'         => 'width:full;'
+                ),
+                'auto_currency_pairs' => array(
+                    'title' => __("Auto Update Currency Pairs" , 'woo-sham'),
+                    'type' => 'checkbox',
+                    'description' => __('check to enable auto update currenct pairs updates from external API' , 'woo-sham'),
+                    'desc_tip' => true,
+                    'default' => '',
+                    
                 )
+
             );
         }
-        public function Validate_currency_pairs_field($key , $value){
+        public function validate_currency_pairs_field($key , $value){
             try{
                 if(!empty($value)){
                     $lines = explode("\n" , $value);
@@ -75,6 +87,41 @@ if(!class_exists('Woo_Sham_Integration')) {
                 return $this->currency_pairs;
             }
         }
+
+        public function get_currencies_from_api(){
+            $pairs = get_option('woo_currency_pairs');
+            $currencies = '';
+            $last_key = array_key_last($pairs);
+            foreach($pairs as $key => $value){
+                if($key == $last_key){
+                    $currencies .= $key;
+
+                }else{
+                    $currencies .= $key . ',';
+                }
+            }
+            $api_key = 'cur_live_V6HhdwbrYvox3tQmEb7TJYG3iFK95AEPY4y8yEaf';
+            $base_currency = get_woocommerce_currency();
+            $url = 'https://api.currencyapi.com/v3/latest?apikey='.$api_key.'&base_currency='.$base_currency.'&currencies='.$currencies;
+            $response = wp_remote_get($url);
+            $body = wp_remote_retrieve_body($response);
+            $json = json_decode($body,true);
+
+            if(isset($json) && isset($json['data'])){
+                $data =$json['data'];
+                $currency_field = '';
+                $pairs = array();
+                foreach($data as $currency){
+                    $currency_field .= $currency['code'] . ':' .$currency['value'] . "\n";
+                    $pairs[$currency['code']] = $currency['value'];
+                }
+                $this->update_option('currency_pairs' , $currency_field);
+                update_option('woo_currency_pairs' ,    $pairs);
+            }
+        } 
+
+
+
         public function display_select_currency(){
             $cur_selected = 'not set';
             if(isset($_COOKIE['currency'])){
@@ -87,7 +134,7 @@ if(!class_exists('Woo_Sham_Integration')) {
 
              foreach ($pairs as $key => $value){
                 $selected = ($cur_selected == $key ) ? 'selected' : '';
-                $option = '<option'. $selected .' value="'.$key.'">'.$key.'</option>';
+                $option = '<option '. $selected .' value="'.$key.'">'.$key.'</option>';
                 echo $option;
             }
             echo '</select><input type="submit" value="'.esc_html__('set','woo-sham').'"></form>';

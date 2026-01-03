@@ -97,6 +97,8 @@ if (!class_exists('Woo_Sham')) {
             add_filter('woocommerce_product_get_regular_price' , array($this , 'change_price'));
             add_filter('woocommerce_product_get_sale_price' , array($this , 'change_price'));
             add_filter('woocommerce_currency_symbol' , array($this , 'change_existing_currency_symbol') , 10 ,2);
+        
+            register_deactivation_hook(__FILE__,array($this, 'on_deactivation'));
         }   
         function woo_sham_enqueue_assets(){
             wp_register_script('set_currency_cookie_ajax' , plugin_dir_url(__FILE__).'/assets/js/ajax.js' , array('jquery'));
@@ -133,7 +135,7 @@ if (!class_exists('Woo_Sham')) {
 
 
         public function change_price($price){
-            if($price < 1.0 || !isset($_COOKIE['currency']) || $_COOKIE == get_woocommerce_currency()){
+            if ( $price < 1.0 || !isset($_COOKIE['currency']) || $_COOKIE['currency'] == get_woocommerce_currency()){
                 return $price;
             }
             $pairs = get_option('woo_currency_pairs');
@@ -159,6 +161,13 @@ if (!class_exists('Woo_Sham')) {
                 $this->deactivate_plugin();
                 wp_die('This plugin requires PHP version ' . self::MINIMUM_PHP_VERSION . ' or higher. Please update your PHP version.');
             }
+            if(!wp_next_scheduled('get_currency_from_api_hourly')){
+                wp_schedule_event(time(), 'hourly' , 'get_currencies_from_api_hourly');
+            }
+        }
+
+        public function on_deactivation(){
+            wp_clear_scheduled_hook('get_currency_from_api_hourly');
         }
         
         /**

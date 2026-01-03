@@ -1,4 +1,10 @@
 <?php
+function storefront_child_setup(){
+    $path = get_stylesheet_directory() . '/languages';
+    load_child_theme_textdomain('storegront-child', $path);
+}
+add_action('after_theme_setup', 'storefront_child_setup');
+
 
 // add_action( 'wp_enqueue_scripts', 'storefront_child_enqueue_styles' );
 // function storefront_child_enqueue_styles() {

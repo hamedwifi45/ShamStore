@@ -1,0 +1,265 @@
+# Copyright (C) 2026 ABD ALHAMID
+# This file is distributed under the same license as the Storefront Child theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Storefront Child 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/storefront-child\n"
+"POT-Creation-Date: 2026-01-03T09:23:04+01:00\n"
+"PO-Revision-Date: 2026-01-03 15:22+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+"X-Domain: storefront-child\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Storefront Child"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "A child theme of Storefront"
+msgstr "موضوع فرعي لـ Storefront"
+
+#. Author of the theme
+#: style.css
+msgid "ABD ALHAMID"
+msgstr "عبد الحميد"
+
+#: functions.php:64
+msgid "Saudi Arabia"
+msgstr "المملكة العربية السعودية"
+
+#: functions.php:70
+msgid "SA"
+msgstr "SA"
+
+#: functions.php:78
+msgid "Event Start at:"
+msgstr "بدء الحدث في:"
+
+#: functions.php:81
+msgid "Event End at:"
+msgstr "انتهاء الحدث في:"
+
+#: functions.php:105
+msgid "جميع حقوق والنشر محفوظة عند "
+msgstr "جميع حقوق والنشر محفوظة عند "
+
+#: functions.php:133
+msgid "Sale!"
+msgstr "خصم!"
+
+#: inc/header-display.php:7
+msgid "Header Display Settings"
+msgstr "إعدادات عرض الرأس"
+
+#: inc/header-display.php:24
+msgid "Header Theme"
+msgstr "تنسيق الرأس"
+
+#: inc/header-display.php:25
+msgid "Change the header display style."
+msgstr "تغير تنسيق عرض الرأس"
+
+#: inc/header-display.php:27
+msgid "Theme 1"
+msgstr "تنسيق 1"
+
+#: inc/header-display.php:28
+msgid "Theme 2"
+msgstr "تنسيق 2"
+
+#: inc/header-display.php:29
+msgid "Theme 3"
+msgstr "تنسيق 3"
+
+#: inc/header-display.php:30
+msgid "Theme 4"
+msgstr "تنسيق 2"
+
+#: inc/products-display.php:6
+msgid "Products Display Settings"
+msgstr "اعدادات عرض المنتجات"
+
+#: inc/products-display.php:21
+msgid "Product Theme"
+msgstr "تنسيق المنتج"
+
+#: inc/products-display.php:24
+msgid "Change the products display in the product archive page ."
+msgstr "قم بتغيير طريقة عرض المنتجات في صفحة أرشيف المنتجات."
+
+#: inc/products-display.php:27
+msgid "Top"
+msgstr "اعلى"
+
+#: inc/products-display.php:28
+msgid "Bottom"
+msgstr "اسفل"
+
+#: inc/products-display.php:29
+msgid "Above"
+msgstr "امام"
+
+#: inc/share-button.php:19
+msgid "facebook"
+msgstr "فيسبوك"
+
+#: inc/share-button.php:29
+msgid "twitter"
+msgstr "تويتر"
+
+#: inc/share-button.php:40
+msgid "linkedin"
+msgstr "لينكد ان"
+
+#: inc/share-button.php:52
+msgid "pinterest"
+msgstr "بينترست"
+
+#: inc/share-button.php:64
+msgid "whatsapp"
+msgstr "واتساب"
+
+#: inc/share-button.php:74
+msgid "email"
+msgstr "بريد الكتروني"
+
+#: inc/share-button.php:97
+msgid "Woocommerce_advanced"
+msgstr "اعدادات متقدمة في ووكوميرس"
+
+#: inc/share-button.php:101
+msgid "Social Share"
+msgstr "مشاركة على مواقع تواصل"
+
+#: inc/share-button.php:115
+msgid "Enable/Disable Facebook Icon"
+msgstr "تفعيل/الغاء ايقونة فيسبوك"
+
+#: inc/share-button.php:119
+msgid "Hide or Show Facebook share icon"
+msgstr "إخفاء او اظهار ايقونة فيسبوك"
+
+#: inc/share-button.php:131
+msgid "Enable/Disable Twitter Icon"
+msgstr "تفعيل/الغاء ايقونة تويتر"
+
+#: inc/share-button.php:135
+msgid "Hide or Show Twitter share icon"
+msgstr "إخفاء او اظهار ايقونة تويتر"
+
+#: inc/share-button.php:147
+msgid "Enable/Disable LinkedIn Icon"
+msgstr "تفعيل/الغاء ايقونة لينكدان"
+
+#: inc/share-button.php:151
+msgid "Hide or Show LinkedIn share icon"
+msgstr "إخفاء او اظهار ايقونة لينكدان"
+
+#: inc/share-button.php:163
+msgid "Enable/Disable Pinterest Icon"
+msgstr "تفعيل/الغاء ايقونة بنترست"
+
+#: inc/share-button.php:167
+msgid "Hide or Show Pinterest share icon"
+msgstr "إخفاء او اظهار ايقونةبنترست"
+
+#: inc/share-button.php:179
+msgid "Enable/Disable WhatsApp Icon"
+msgstr "تفعيل/الغاء ايقونة واتساب"
+
+#: inc/share-button.php:183
+msgid "Hide or Show WhatsApp share icon"
+msgstr "إخفاء او اظهار ايقونة واتساب"
+
+#: inc/share-button.php:195
+msgid "Enable/Disable Email Icon"
+msgstr "تفعيل/الغاء ايقونة بريد الكتروني"
+
+#: inc/share-button.php:199
+msgid "Hide or Show Email share icon"
+msgstr "إخفاء او اظهار ايقونة البريد الكتروني"
+
+#: inc/wcp-online-summit.php:18
+msgid "ضيف على سلة"
+msgstr ""
+
+#: inc/wcp-online-summit.php:35
+msgid "نوع جديد للمنتج اسمو سوميت"
+msgstr ""
+
+#: inc/wcp-online-summit.php:91
+msgid "معلومات السوميت"
+msgstr ""
+
+#: inc/wcp-online-summit.php:109
+msgid "اسم السوميت"
+msgstr ""
+
+#: inc/wcp-online-summit.php:112
+msgid "ادخل اسم السوميت هنا"
+msgstr ""
+
+#: inc/wcp-online-summit.php:121
+msgid "تاريخ بداية السوميت"
+msgstr ""
+
+#: inc/wcp-online-summit.php:123
+msgid "ادخل تاريخ بداية السوميت هنا"
+msgstr ""
+
+#: inc/wcp-online-summit.php:133
+msgid "تاريخ نهاية السوميت"
+msgstr ""
+
+#: inc/wcp-online-summit.php:135
+msgid "ادخل تاريخ نهاية السوميت هنا"
+msgstr ""
+
+#: inc/wcp-online-summit.php:145
+msgid "المنطقة الزمنية للسوميت"
+msgstr ""
+
+#: inc/wcp-online-summit.php:148
+msgid "ادخل المنطقة الزمنية للسوميت هنا"
+msgstr ""
+
+#: inc/wcp-online-summit.php:155
+msgid "Summit Date Range"
+msgstr "مدى تاريخ التذكرة"
+
+#: inc/wcp-online-summit.php:156
+msgid "Enter in which dates the summit will start and finish"
+msgstr "ادخل متى تبدأ تاريخ التذكرة ومتى تنتهي"
+
+#: inc/wcp-online-summit.php:157
+msgctxt "placeholder"
+msgid "From…"
+msgstr "من"
+
+#: inc/wcp-online-summit.php:160
+msgid "To"
+msgstr "الى"
+
+#: inc/wcp-online-summit.php:161
+msgctxt "placeholder"
+msgid "To…"
+msgstr "الى"
+
+#: woocommerce/archive-product.php:99
+msgid "المنتجات الاكثر مبيعاً"
+msgstr ""
+
+#: woocommerce/content-single-product.php:41
+msgid "From: "
+msgstr "من :"
+
+#: woocommerce/content-single-product.php:43
+msgid " To: "
+msgstr "الى :"

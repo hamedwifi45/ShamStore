@@ -32,7 +32,8 @@ if(!class_exists('Woo_Sham_Integration')) {
             $this->currency_pairs = $this->get_option('currency_pairs');
             $this->auto_currency_pairs = $this->get_option('auto_currency_pairs');
             if(isset($this->auto_currency_pairs) && $this->auto_currency_pairs == "yes"){
-                $this->get_currencies_from_api();
+                // $this->get_currencies_from_api();
+                add_action('get_currency_from_api_hourly' , array($this, 'get_currencies_from_api' ) , 10);
             }
 
 
